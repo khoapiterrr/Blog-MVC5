@@ -21,7 +21,7 @@ namespace KQT.Web.Controllers
                 Title = "Cháo các bạn",
                 Image = "home-bg.jpg"
             };
-            ViewBag.Data = "hehehehe";
+            //ViewBag.Data = "hehehehe";
             return View(obj);
         }
     }
