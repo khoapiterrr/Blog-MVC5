@@ -1,0 +1,33 @@
+﻿@model KQT.Web.Models.PageHeaderViewModel
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/Content/img/@Model.Image')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            @if (Model.IsHome == true)
+            {
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>@Model.Title</h1>
+                        <span class="subheading">@Model.SubTitle</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1>@Model.Title</h1>
+                        <h2 class="subheading">@Model.SubTitle</h2>
+                        <span class="meta">
+                            Posted by
+                            <a href="#">@Model.Author</a>
+                            @Model.CreatedDate
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</header>
