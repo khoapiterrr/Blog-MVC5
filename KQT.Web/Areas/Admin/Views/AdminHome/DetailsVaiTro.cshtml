@@ -1,0 +1,35 @@
+﻿@model KQT.Entity.VaiTro
+
+@{
+    ViewBag.Title = "DetailsVaiTro";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetailsVaiTro</h2>
+
+<div>
+    <h4>VaiTro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <lable class="control-label col-md-2">Tên vai trò</lable>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenVaiTro)
+        </dd>
+
+        <dt>
+            <lable class="control-label col-md-2">Mô tả</lable>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "EditVaiTro", new { id = Model.Id }) |
+    @Html.ActionLink("Trở lại", "VaiTro")
+</p>

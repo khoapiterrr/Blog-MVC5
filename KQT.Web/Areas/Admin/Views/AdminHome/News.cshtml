@@ -1,0 +1,71 @@
+﻿@model IEnumerable<KQT.Entity.NewsEntity>
+
+@{
+    ViewBag.Title = "Bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>News</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "CreateNews")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tiêu đề
+        </th>
+        <th>
+            Tiêu đề phụ
+        </th>
+        <th>
+            Người viết 
+        </th>
+        <th>
+            Ngày tạo
+        </th>
+        <th>
+            Người sửa
+        </th>
+        <th>
+            Ngày sửa
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewTitleSale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+
+        <td>
+            @Html.ActionLink("Sửa", "EditNews", new { id = item.Id }) |
+            @Html.ActionLink("Chi tiết", "DetailsNews", new { id = item.Id }) |
+            @Html.ActionLink("Xóa", "DeleteNews", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
