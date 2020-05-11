@@ -23,6 +23,80 @@ namespace KQT.Web.Areas.Admin.Controllers
             
             return View(news);
         }
+        public ActionResult CreateNews()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNews(NewsEntity news,HttpPostedFileBase fUploadHead, HttpPostedFileBase fUploadBody, HttpPostedFileBase fUploadFooter)
+        {
+            if (ModelState.IsValid)
+            {
+                if (CheckFile(fUploadHead,"News"))
+                {
+                    news.ImageHead = fUploadHead.FileName;
+                }
+                if (CheckFile(fUploadBody,"News"))
+                {
+                    news.ImageBody = fUploadBody.FileName;
+                }
+                if (CheckFile(fUploadFooter,"News"))
+                {
+                    news.ImageFooter = fUploadFooter.FileName;
+                }
+                news.CreatedDate = DateTime.Now;
+                news.Id = Guid.NewGuid().ToString();
+                db.NewsEntities.Add(news);
+                db.SaveChanges();
+                return RedirectToAction("News");
+            }
+            return null;
+        }
+        [HttpGet]
+        public ActionResult EditNews(string id)
+        {
+            NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
+            return View(news);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditNews (NewsEntity news, string id , HttpPostedFileBase fUploadHead , HttpPostedFileBase fUploadBody, HttpPostedFileBase fUploadFooter)
+        {
+            if (ModelState.IsValid)
+            {
+                if (CheckFile(fUploadHead,"News"))
+                {
+                    news.ImageHead = fUploadHead.FileName;
+                }
+                if (CheckFile(fUploadBody, "News"))
+                {
+                    news.ImageBody = fUploadBody.FileName;
+                }
+                if (CheckFile(fUploadFooter, "News"))
+                {
+                    news.ImageFooter = fUploadFooter.FileName;
+                }
+                news.UpdatedDate = DateTime.Now;
+                NewsEntity oldNews = db.NewsEntities.FirstOrDefault(x => x.Id == id);
+                db.Entry(oldNews).CurrentValues.SetValues(news);
+                db.SaveChanges();
+                return RedirectToAction("News");
+            }
+            return null;
+        }
+        [HttpGet]
+        public ActionResult DetailsNews(string id)
+        {
+            NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
+            return View(news);
+        }
+        public ActionResult DeleteNews(string id)
+        {
+            NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
+            db.NewsEntities.Remove(news);
+            return View();
+        }
         #endregion
 
         #region Người dùng
@@ -163,5 +237,14 @@ namespace KQT.Web.Areas.Admin.Controllers
             return null;
         }
         #endregion
+        private Boolean CheckFile(HttpPostedFileBase fUpload , string path)
+        {
+            if (fUpload != null && fUpload.ContentLength > 0)
+            {
+                fUpload.SaveAs(Server.MapPath("~/Content/img/"+path+"/ " + fUpload.FileName));
+                return true;
+            }
+            return false;
+        }
     }
 }
