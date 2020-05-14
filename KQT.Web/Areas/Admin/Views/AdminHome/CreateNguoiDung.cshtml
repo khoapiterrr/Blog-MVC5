@@ -1,0 +1,156 @@
+﻿@model KQT.Entity.NguoiDung
+
+@{
+    ViewBag.Title = "Thêm mới người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("CreateNguoiDung","AdminHome",FormMethod.Post,new { encType="multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3>Thêm mới</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên đăng nhập</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control",@id="TenDangNhap" } })
+                @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mật khẩu</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @type = "password",@id="MatKhau" } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ảnh</label>
+            <div class="col-md-10">
+                <img id="img" alt="User Image" style="height:300px;width:350px" />
+                <input type='file' id="fUpload" name="fUpload"/>
+                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Họ tên</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Điện thoại</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control", @id = "DienThoai" } })
+                @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",@id="Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Địa chỉ</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Vai trò</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.VaiTroId,(SelectList)ViewBag.ListVaiTro,"---Chọn---", new { @class = "form-control",@id="VaiTro"  })
+                @Html.ValidationMessageFor(model => model.VaiTroId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="btnThem" type="button" value="Thêm" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở lại", "NguoiDung")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    };
+
+    $("#fUpload").change(function () {
+        readURL(this);
+    });
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    };
+    function validatePhone(phone) {
+        var phoneno10 = /^\d{9,11}$/;
+        if (phone.match(phoneno10)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    $("#btnThem").click(function () {
+        if ($("#TenDangNhap").val() == "") {
+            alert("Bạn nhập tên đăng nhập");
+            return;
+        }
+        if ($("#MatKhau").val() == "") {
+            alert("Bạn nhập mật khẩu");
+            return;
+        }
+        if ($("#Email").val() !== "") {
+            if (validateEmail($("#Email").val()) == false) {
+                alert("Bạn cần nhập đúng định dạng email");
+                return;
+            }
+        }
+        if ($("#DienThoai").val() !== "") {
+            if (validatePhone($("#DienThoai").val()) == false) {
+                alert("Bạn cần nhập đúng định dạng số điện thoại");
+                return;
+            }
+        }
+        if ($("#VaiTro").val() == "") {
+            alert("Bạn cần chọn vai trò");
+            return;
+        }
+        else {
+            $('#btnThem').attr('type', 'submit');
+            document.getElementById("btnThem").click()
+        }
+    });
+</script>
+}

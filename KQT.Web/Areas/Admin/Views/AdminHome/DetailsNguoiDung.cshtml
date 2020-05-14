@@ -1,0 +1,95 @@
+﻿@model KQT.Entity.NguoiDung
+
+@{
+    ViewBag.Title = "DetailsNguoiDung";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-left:20px;">Chi tiết người dùng</h2>
+<style>
+    div #content{
+        margin-left:20px;
+    }
+</style>
+<div id="content">
+    <h4>Chi tiết</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-2">Tên đăng nhập</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDangNhap)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Mật khẩu</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Ảnh</label>
+        </dt>
+
+        <dd>
+            <img alt="User image" src="~/Content/img/User/@Model.Avatar" style="width:200px;height:150px;" />
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Họ tên</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Điện thoại</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Email</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Địa chỉ</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Ngày tạo</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Vai trò id</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VaiTroId)
+        </dd>
+
+    </dl>
+</div>
+<p style="margin-left:20px;">
+    @Html.ActionLink("Sửa", "EditNguoiDung", new { NguoiDungId = Model.Id }) |
+    @Html.ActionLink("Trở lại", "NguoiDung")
+</p>
