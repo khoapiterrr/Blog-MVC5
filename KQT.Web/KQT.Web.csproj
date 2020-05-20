@@ -146,6 +146,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChucNangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhanQuyenController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VaiTroController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -220,6 +225,7 @@
     <Content Include="Content\js\clean-blog.js" />
     <Content Include="Content\js\clean-blog.min.js" />
     <Content Include="Content\js\contact_me.js" />
+    <Content Include="Content\js\hethong.js" />
     <Content Include="Content\js\jqBootstrapValidation.js" />
     <Content Include="Content\mail\contact_me.php" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
@@ -1944,9 +1950,29 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\ChucNang\" />
+    <Folder Include="Areas\Admin\Views\Contact\" />
+    <Folder Include="Areas\Admin\Views\News\" />
+    <Folder Include="Areas\Admin\Views\VaiTro\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\AdminHome\CreateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CreateNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CreateVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\News.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\NguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\VaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\EditNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\Employees\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanQuyen\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
