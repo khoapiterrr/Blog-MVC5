@@ -39,6 +39,7 @@
     <WarningLevel>4</WarningLevel>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -215,8 +216,13 @@
     <Content Include="Content\img\about-bg.jpg" />
     <Content Include="Content\img\contact-bg.jpg" />
     <Content Include="Content\img\home-bg.jpg" />
+    <Content Include="Content\img\News\ 4ZGtXHj.png" />
+    <Content Include="Content\img\News\ 66763396_1285942711585452_4189486047421267968_n.jpg" />
+    <Content Include="Content\img\News\ 67306525_630307827458727_5715331986017484800_n.jpg" />
     <Content Include="Content\img\post-bg.jpg" />
     <Content Include="Content\img\post-sample-image.jpg" />
+    <Content Include="Content\img\User\48363042_1006510356216413_386487339414716416_n.png" />
+    <Content Include="Content\img\User\default_user_image.png" />
     <Content Include="Content\js\clean-blog.js" />
     <Content Include="Content\js\clean-blog.min.js" />
     <Content Include="Content\js\contact_me.js" />
@@ -1922,7 +1928,9 @@
     <Content Include="Content\plugins\toastr\toastr.js.map" />
     <Content Include="Areas\Admin\Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_MenuSideBarPartial.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1947,6 +1955,18 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\AdminHome\News.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\NguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CreateNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\VaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CreateVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CreateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsNews.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
