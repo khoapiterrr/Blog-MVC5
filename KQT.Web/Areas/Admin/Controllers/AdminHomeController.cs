@@ -16,88 +16,7 @@ namespace KQT.Web.Areas.Admin.Controllers
         {
             return View();
         }
-        #region News
-        public ActionResult News()
-        {
-            List<NewsEntity> news = db.NewsEntities.ToList();
-            
-            return View(news);
-        }
-        public ActionResult CreateNews()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateNews(NewsEntity news,HttpPostedFileBase fUploadHead, HttpPostedFileBase fUploadBody, HttpPostedFileBase fUploadFooter)
-        {
-            if (ModelState.IsValid)
-            {
-                if (CheckFile(fUploadHead,"News"))
-                {
-                    news.ImageHead = fUploadHead.FileName;
-                }
-                if (CheckFile(fUploadBody,"News"))
-                {
-                    news.ImageBody = fUploadBody.FileName;
-                }
-                if (CheckFile(fUploadFooter,"News"))
-                {
-                    news.ImageFooter = fUploadFooter.FileName;
-                }
-                news.CreatedDate = DateTime.Now;
-                news.Id = Guid.NewGuid().ToString();
-                db.NewsEntities.Add(news);
-                db.SaveChanges();
-                return RedirectToAction("News");
-            }
-            return null;
-        }
-        [HttpGet]
-        public ActionResult EditNews(string id)
-        {
-            NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
-            return View(news);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditNews (NewsEntity news, string id , HttpPostedFileBase fUploadHead , HttpPostedFileBase fUploadBody, HttpPostedFileBase fUploadFooter)
-        {
-            if (ModelState.IsValid)
-            {
-                if (CheckFile(fUploadHead,"News"))
-                {
-                    news.ImageHead = fUploadHead.FileName;
-                }
-                if (CheckFile(fUploadBody, "News"))
-                {
-                    news.ImageBody = fUploadBody.FileName;
-                }
-                if (CheckFile(fUploadFooter, "News"))
-                {
-                    news.ImageFooter = fUploadFooter.FileName;
-                }
-                news.UpdatedDate = DateTime.Now;
-                NewsEntity oldNews = db.NewsEntities.FirstOrDefault(x => x.Id == id);
-                db.Entry(oldNews).CurrentValues.SetValues(news);
-                db.SaveChanges();
-                return RedirectToAction("News");
-            }
-            return null;
-        }
-        [HttpGet]
-        public ActionResult DetailsNews(string id)
-        {
-            NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
-            return View(news);
-        }
-        public ActionResult DeleteNews(string id)
-        {
-            NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
-            db.NewsEntities.Remove(news);
-            return View();
-        }
-        #endregion
+        
 
         #region Người dùng
         public ActionResult NguoiDung()
@@ -142,6 +61,7 @@ namespace KQT.Web.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public ActionResult EditNguoiDung(NguoiDung nguoiDung, int id ,HttpPostedFileBase fUpload )
         {
             NguoiDung nguoidungOld = db.NguoiDungs.Where(x => x.Id == id).First();
@@ -177,66 +97,7 @@ namespace KQT.Web.Areas.Admin.Controllers
         }
         #endregion
 
-        #region Vai trò
-        public ActionResult VaiTro()
-        {
-            List<VaiTro> vaitro = db.VaiTros.ToList();
-
-            return View(vaitro);
-        }
-        public ActionResult CreateVaiTro()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateVaiTro(VaiTro vaiTro)
-        {
-            if (ModelState.IsValid)
-            {
-                db.VaiTros.Add(vaiTro);
-                db.SaveChanges();
-                return RedirectToAction("VaiTro");
-            }
-            return null;
-        }
-        [HttpGet]
-        public ActionResult EditVaiTro(int VaiTroId)
-        {
-            VaiTro vaitro = db.VaiTros.SingleOrDefault(x => x.Id == VaiTroId);
-            return View(vaitro);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditVaiTro(VaiTro vaitro , int id)
-        {
-            VaiTro vaitroOld = db.VaiTros.Where(x => x.Id == id).First();
-            if (ModelState.IsValid)
-            {
-                db.Entry(vaitroOld).CurrentValues.SetValues(vaitro);
-                db.SaveChanges();
-                return RedirectToAction("VaiTro");
-            }
-            return View();
-        }
-        [HttpGet]
-        public ActionResult DetailsVaiTro(int VaiTroId)
-        {
-            VaiTro vaiTro = db.VaiTros.Where(x => x.Id == VaiTroId).First();
-            return View(vaiTro);
-        }
-        public ActionResult DeleteVaiTro(int VaiTroId)
-        {
-            if (ModelState.IsValid)
-            {
-                VaiTro vaiTro = db.VaiTros.Where(x => x.Id == VaiTroId).First();
-                db.VaiTros.Remove(vaiTro);
-                db.SaveChanges();
-                return View();
-            }
-            return null;
-        }
-        #endregion
+        
         private Boolean CheckFile(HttpPostedFileBase fUpload , string path)
         {
             if (fUpload != null && fUpload.ContentLength > 0)

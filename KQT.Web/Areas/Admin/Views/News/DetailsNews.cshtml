@@ -1,0 +1,147 @@
+﻿@model KQT.Entity.NewsEntity
+
+@{
+    ViewBag.Title = "DetailsNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin chi tiết</h2>
+
+<div style="margin-left:20px;">
+    <h4>Tin tức</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Người tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            Ngày tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+           Người cập nhật
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </dd>
+
+        <dt>
+           Ngày cập nhật
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+
+        <dt>
+           Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+           Tiêu đề
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewTitle)
+        </dd>
+
+        <dt>
+           Tiêu đề phụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewTitleSale)
+        </dd>
+
+        <dt>
+            Thông tin phần đầu
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NewContentHead)
+        </dd>
+
+        <dt>
+            Thông tin phần thân
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NewContentBody)
+        </dd>
+
+        <dt>
+            Thông tin phần cuối
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NewContentFooter)
+        </dd>
+
+        <dt>
+           Ảnh phần đầu
+        </dt>
+
+        <dd>
+            <img src="~/Content/img/News/ @Model.ImageHead" style="height:300px;width:350px" />
+        </dd>
+
+        <dt>
+            Ảnh phần thân
+        </dt>
+
+        <dd>
+            <img src="~/Content/img/News/ @Model.ImageBody" style="height:300px;width:350px" />
+        </dd>
+
+        <dt>
+            Ảnh phần cuối
+        </dt>
+
+        <dd>
+            <img src="~/Content/img/News/ @Model.ImageFooter" style="height:300px;width:350px" />
+        </dd>
+
+        <dt>
+           Lượt xem
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViewCount)
+        </dd>
+
+        <dt>
+            Từ khóa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaKeyword)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDescription)
+        </dd>
+
+    </dl>
+</div>
+<p style="margin-left:20px;">
+    @Html.ActionLink("Sửa", "EditNews", new { id = Model.Id }) |
+    @Html.ActionLink("Trở lại", "News")
+</p>

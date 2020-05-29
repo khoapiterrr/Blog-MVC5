@@ -1,0 +1,76 @@
+﻿@model KQT.Entity.VaiTro
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Quản lý vai trò</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item">Vai trò </li>
+                    <li class="breadcrumb-item active">Thêm mới </li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="card-title">Thêm mới vai trò</h3>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a href='@Url.Action("VaiTro", "VaiTro")' class="btn btn-danger"> Danh sách</a>
+                                &nbsp;
+                                @*<input id="btnThem" type="button" value="Thêm" class="btn btn-warning" />*@
+                                <button type="submit" id="btnThem" class="btn btn-warning"><i class="fas fa-save"></i> Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-horizontal">
+                            <h4>Thêm mới vai trò</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Tên vai trò</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TenVaiTro, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TenVaiTro, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Mô tả</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                 }
+
+                <div style="margin-left:10px">
+                    @Html.ActionLink("Trở lại", "VaiTro")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
