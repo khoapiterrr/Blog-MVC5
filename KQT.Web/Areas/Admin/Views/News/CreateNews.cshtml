@@ -47,22 +47,6 @@
                             <h3>Thêm mới tin tức</h3>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <lable class="control-label col-md-2">Người tạo</lable>
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <lable class="control-label col-md-2">Trạng thái</lable>
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <lable class="control-label col-md-2">Tiêu đề</lable>
@@ -147,42 +131,40 @@
                                 </div>
                             </div>
                         </div>
-                        
 
                         <div style="margin-left:20px;">
-                            @Html.ActionLink("Trở lại", "News")
+                            @Html.ActionLink("Trở lại", "Index")
                         </div>
                     </div>
-                 }
+                }
             </div>
         </div>
     </div>
 </section>
 
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script type="text/javascript">
-            function readURL(input,type) {
+    <script type="text/javascript">
+        function readURL(input, type) {
             if (input.files && input.files[0]) {
-            var reader = new FileReader();
+                var reader = new FileReader();
 
                 reader.onload = function (e) {
                     $('#img' + type).attr('src', e.target.result);
-            };
+                };
 
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
             }
-    };
+        };
 
-    $("#fUploadHead").change(function () {
-        readURL(this,"Head");
-    });
-    $("#fUploadBody").change(function () {
-            readURL(this,"Body");
+        $("#fUploadHead").change(function () {
+            readURL(this, "Head");
         });
-    $("#fUploadFooter").change(function () {
-            readURL(this,"Footer");
+        $("#fUploadBody").change(function () {
+            readURL(this, "Body");
+        });
+        $("#fUploadFooter").change(function () {
+            readURL(this, "Footer");
         });
     </script>
 }

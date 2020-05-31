@@ -60,6 +60,10 @@
     <Compile Include="Migrations\202004281009101_updateQuyenNgdung.designer.cs">
       <DependentUpon>202004281009101_updateQuyenNgdung.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005310430247_uplengthPwdCustomer.cs" />
+    <Compile Include="Migrations\202005310430247_uplengthPwdCustomer.designer.cs">
+      <DependentUpon>202005310430247_uplengthPwdCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004281009101_updateQuyenNgdung.resx">
       <DependentUpon>202004281009101_updateQuyenNgdung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005310430247_uplengthPwdCustomer.resx">
+      <DependentUpon>202005310430247_uplengthPwdCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

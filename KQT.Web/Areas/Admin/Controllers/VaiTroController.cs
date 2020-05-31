@@ -34,7 +34,7 @@ namespace KQT.Web.Areas.Admin.Controllers
             {
                 db.VaiTros.Add(vaiTro);
                 db.SaveChanges();
-                return RedirectToAction("VaiTro");
+                return RedirectToAction("Index");
             }
             return null;
         }
@@ -55,7 +55,7 @@ namespace KQT.Web.Areas.Admin.Controllers
             {
                 db.Entry(vaitroOld).CurrentValues.SetValues(vaitro);
                 db.SaveChanges();
-                return RedirectToAction("VaiTro");
+                return RedirectToAction("Index");
             }
             return View();
         }

@@ -47,18 +47,6 @@
                                     Tiêu đề phụ
                                 </th>
                                 <th>
-                                    Người viết
-                                </th>
-                                <th>
-                                    Ngày tạo
-                                </th>
-                                <th>
-                                    Người sửa
-                                </th>
-                                <th>
-                                    Ngày sửa
-                                </th>
-                                <th>
                                     Lượt xem
                                 </th>
                                 <th>
@@ -81,22 +69,7 @@
                                         @Html.DisplayFor(modelItem => item.NewTitleSale)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.CreatedBy)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UpdatedBy)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UpdatedDate)
-                                    </td>
-                                    <td>
                                         @Html.DisplayFor(modelItem => item.ViewCount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
                                     </td>
 
                                     <td>
@@ -105,7 +78,7 @@
                                         <a href="javascript:void(0)" onclick="xoatintuc('@item.Id')" class="btn btn-danger">Xóa</a>
                                     </td>
                                 </tr>
-                             }
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -165,4 +138,3 @@
         }
     </script>
 }
-
