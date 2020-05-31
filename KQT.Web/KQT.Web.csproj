@@ -1947,6 +1947,18 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\AdminHome\CreateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CreateNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\CreateVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\DetailsVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditNguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\EditVaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\News.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\NguoiDung.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\VaiTro.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
