@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace KQT.Web.Areas.Admin.Controllers
 {
-    public class PhanQuyenController : Controller
+    public class PhanQuyenController : BaseAdminController
     {
         private readonly DataMigrationContext _context;
 

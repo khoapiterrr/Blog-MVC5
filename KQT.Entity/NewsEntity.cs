@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace KQT.Entity
 {
-    
     [Table("News")]
     public class NewsEntity : BaseEntity
     {
@@ -17,14 +12,16 @@ namespace KQT.Entity
         public string NewTitle { get; set; }
 
         public string NewTitleSale { get; set; }
-        
+
+        [AllowHtml]
         [Column(TypeName = "ntext")]
-        
         public string NewContentHead { get; set; }
 
+        [AllowHtml]
         [Column(TypeName = "ntext")]
         public string NewContentBody { get; set; }
 
+        [AllowHtml]
         [Column(TypeName = "ntext")]
         public string NewContentFooter { get; set; }
 

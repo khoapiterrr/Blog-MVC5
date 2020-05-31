@@ -17,7 +17,7 @@ namespace KQT.Web.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "Login", action = "Index", id = UrlParameter.Optional },
                 new[] { "KQT.Web.Areas.Admin.Controllers" }
             );
         }

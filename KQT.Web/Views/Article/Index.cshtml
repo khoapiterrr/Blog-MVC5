@@ -1,0 +1,27 @@
+﻿@model KQT.Web.Models.PageHeaderViewModel
+
+@{
+    ViewBag.Title = "Tin tức chi tiết";
+}
+@section _PageHeader
+{
+    @Html.Partial("_PageHeaderPartial", Model)
+}
+
+@Html.Raw(Model.NewsDetail.NewContentHead)
+@if (!string.IsNullOrEmpty(Model.NewsDetail.ImageBody))
+{
+    <h6>hehehehehehehheehehhe</h6>
+    <img class="img-fluid" src="/Content/img/News/@Model.NewsDetail.ImageBody" alt="">
+}
+@Html.Raw(Model.NewsDetail.NewContentBody)
+@if (!string.IsNullOrEmpty(Model.NewsDetail.ImageFooter))
+{
+    <img class="img-fluid" src="/Content/img/News/@Model.NewsDetail.ImageFooter" alt="">
+}
+@Html.Raw(Model.NewsDetail.NewContentFooter)
+<p>
+    @Model.NewsDetail.ViewCount.ToString() Viewer. Placeholder text by
+    <a href="#">HihiheheCuteHotMe</a>. Photographs by
+    <a href="#">Khoa Quân Tiến</a>.
+</p>

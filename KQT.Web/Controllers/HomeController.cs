@@ -20,7 +20,8 @@ namespace KQT.Web.Controllers
             };
             return View(obj);
         }
-        public ActionResult About ()
+
+        public ActionResult About()
         {
             var obj = new PageHeaderViewModel
             {

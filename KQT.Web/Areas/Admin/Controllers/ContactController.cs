@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace KQT.Web.Areas.Admin.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : BaseAdminController
     {
         private readonly DataMigrationContext _context;
 

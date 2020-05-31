@@ -8,32 +8,34 @@ using System.Web.Mvc;
 
 namespace KQT.Web.Areas.Admin.Controllers
 {
-    public class AdminHomeController : Controller
+    public class AdminHomeController : BaseAdminController
     {
-        DataMigrationContext db = new DataMigrationContext();
+        private DataMigrationContext db = new DataMigrationContext();
+
         // GET: Admin/AdminHome
         public ActionResult Index()
         {
             return View();
         }
-        
 
         #region Người dùng
+
         public ActionResult NguoiDung()
         {
             List<NguoiDung> user = db.NguoiDungs.ToList();
             return View(user);
         }
+
         public ActionResult CreateNguoiDung()
         {
             ViewBag.ListVaiTro = new SelectList(db.VaiTros.ToList(), "Id", "TenVaiTro");
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateNguoiDung(NguoiDung nguoiDung, HttpPostedFileBase fUpload)
         {
-           
             if (ModelState.IsValid)
             {
                 if (fUpload != null && fUpload.ContentLength > 0)
@@ -52,6 +54,7 @@ namespace KQT.Web.Areas.Admin.Controllers
             }
             return null;
         }
+
         [HttpGet]
         public ActionResult EditNguoiDung(int NguoiDungId)
         {
@@ -59,10 +62,10 @@ namespace KQT.Web.Areas.Admin.Controllers
             ViewBag.ListVaiTro = new SelectList(db.VaiTros.ToList(), "Id", "TenVaiTro");
             return View(user);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
-        public ActionResult EditNguoiDung(NguoiDung nguoiDung, int id ,HttpPostedFileBase fUpload )
+        public ActionResult EditNguoiDung(NguoiDung nguoiDung, int id, HttpPostedFileBase fUpload)
         {
             NguoiDung nguoidungOld = db.NguoiDungs.Where(x => x.Id == id).First();
             if (ModelState.IsValid)
@@ -78,12 +81,14 @@ namespace KQT.Web.Areas.Admin.Controllers
             }
             return null;
         }
+
         [HttpGet]
         public ActionResult DetailsNguoiDung(int NguoiDungId)
         {
             NguoiDung user = db.NguoiDungs.SingleOrDefault(x => x.Id == NguoiDungId);
             return View(user);
         }
+
         public ActionResult DeleteNguoiDung(int NguoiDungId)
         {
             NguoiDung user = db.NguoiDungs.SingleOrDefault(x => x.Id == NguoiDungId);
@@ -95,14 +100,14 @@ namespace KQT.Web.Areas.Admin.Controllers
             }
             return View();
         }
-        #endregion
 
-        
-        private Boolean CheckFile(HttpPostedFileBase fUpload , string path)
+        #endregion Người dùng
+
+        private Boolean CheckFile(HttpPostedFileBase fUpload, string path)
         {
             if (fUpload != null && fUpload.ContentLength > 0)
             {
-                fUpload.SaveAs(Server.MapPath("~/Content/img/"+path+"/ " + fUpload.FileName));
+                fUpload.SaveAs(Server.MapPath("~/Content/img/" + path + "/ " + fUpload.FileName));
                 return true;
             }
             return false;

@@ -160,8 +160,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChucNangController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
@@ -176,10 +178,11 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewsViewModel.cs" />
     <Compile Include="Models\PageHeaderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -501,11 +504,20 @@
     <Content Include="Content\dist\js\pages\dashboard.js" />
     <Content Include="Content\dist\js\pages\dashboard2.js" />
     <Content Include="Content\dist\js\pages\dashboard3.js" />
-    <Content Include="Content\img\about-bg.jpg" />
-    <Content Include="Content\img\contact-bg.jpg" />
-    <Content Include="Content\img\home-bg.jpg" />
-    <Content Include="Content\img\post-bg.jpg" />
-    <Content Include="Content\img\post-sample-image.jpg" />
+    <Content Include="Content\img\News\about-bg.jpg" />
+    <Content Include="Content\img\News\contact-bg.jpg" />
+    <Content Include="Content\img\News\home-bg.jpg" />
+    <Content Include="Content\img\News\ 1-665.jpg" />
+    <Content Include="Content\img\News\ 1_8-Gor5TMPqvkeNwSP3LmFw.png" />
+    <Content Include="Content\img\News\ 1_gOfvCsvOM4F7WbJYophHAw.png" />
+    <Content Include="Content\img\News\ 3-824.jpg" />
+    <Content Include="Content\img\News\ 4ZGtXHj.png" />
+    <Content Include="Content\img\News\ 66763396_1285942711585452_4189486047421267968_n.jpg" />
+    <Content Include="Content\img\News\ 67306525_630307827458727_5715331986017484800_n.jpg" />
+    <Content Include="Content\img\News\ photo-1-159089937642873395459.jpg" />
+    <Content Include="Content\img\News\ post-sample-image.jpg" />
+    <Content Include="Content\img\News\post-bg.jpg" />
+    <Content Include="Content\img\News\post-sample-image.jpg" />
     <Content Include="Content\img\User\default_user_image.png" />
     <Content Include="Content\img\User\mina2.jpg" />
     <Content Include="Content\img\User\mina5.jpg" />
@@ -2241,6 +2253,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\BaseAdmin\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -2276,7 +2290,7 @@
     <Fakes Include="Fakes\HashPassword.fakes" />
     <Fakes Include="Fakes\BCrypt.Net.fakes" />
     <None Include="packages.config" />
-    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
     <None Include="Properties\PublishProfiles\kqt-blog - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>

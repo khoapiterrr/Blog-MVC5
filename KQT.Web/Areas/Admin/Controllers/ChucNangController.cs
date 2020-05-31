@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace KQT.Web.Areas.Admin.Controllers
 {
-    public class ChucNangController : Controller
+    public class ChucNangController : BaseAdminController
     {
         private readonly DataMigrationContext _context;
 

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace KQT.Web.Areas.Admin.Controllers
 {
-    public class EmployeesController : Controller
+    public class EmployeesController : BaseAdminController
     {
         private readonly DataMigrationContext _context;
 

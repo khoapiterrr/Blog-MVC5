@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace KQT.Web.Areas.Admin.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : BaseAdminController
     {
         private DataMigrationContext db = new DataMigrationContext();
 

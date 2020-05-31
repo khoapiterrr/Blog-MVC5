@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using KQT.Entity;
 
 namespace KQT.Web.Models
 {
@@ -13,5 +14,6 @@ namespace KQT.Web.Models
         public string Author { get; set; }
         public string CreatedDate { get; set; }
         public string Image { get; set; }
+        public NewsEntity NewsDetail { get; set; }
     }
 }
