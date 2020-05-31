@@ -2239,11 +2239,11 @@
     <Content Include="Areas\Admin\Views\VaiTro\CreateVaiTro.cshtml" />
     <Content Include="Areas\Admin\Views\VaiTro\DetailsVaiTro.cshtml" />
     <Content Include="Areas\Admin\Views\VaiTro\EditVaiTro.cshtml" />
-    <Content Include="Areas\Admin\Views\VaiTro\VaiTro.cshtml" />
+    <Content Include="Areas\Admin\Views\VaiTro\Index.cshtml" />
     <Content Include="Areas\Admin\Views\News\CreateNews.cshtml" />
     <Content Include="Areas\Admin\Views\News\DetailsNews.cshtml" />
     <Content Include="Areas\Admin\Views\News\EditNews.cshtml" />
-    <Content Include="Areas\Admin\Views\News\News.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\News\Index.cshtml" />
     <None Include="Properties\PublishProfiles\kqt-blog - Web Deploy.pubxml" />
