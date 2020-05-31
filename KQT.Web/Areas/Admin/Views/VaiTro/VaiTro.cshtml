@@ -1,0 +1,125 @@
+﻿@model IEnumerable<KQT.Entity.VaiTro>
+
+@{
+    ViewBag.Title = "Vai trò";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Quản lý vai trò</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Vai trò </li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="card-title">Vai trò</h3>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a class="btn btn-primary" href="@Url.Action("CreateVaiTro", "VaiTro")">Thêm mới</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="dtTable" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Tên vai trò
+                                </th>
+                                <th>
+                                    Mô tả
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenVaiTro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MoTa)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Sửa", "EditVaiTro", new { VaiTroId = item.Id }, new { @class = "btn btn-default" , @style= "background-color:#dfdaeb" }) | 
+                                        @Html.ActionLink("Chi tiết", "DetailsVaiTro", new { VaiTroId = item.Id },new { @class="btn btn-info" }) |
+                                        <a href="javascript:void(0)" onclick="xoavaitro('@item.Id')" class="btn btn-danger">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/Content/plugins/jquery/jquery.js"></script>
+    <script src="~/Content/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Content/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script>
+        $(function () {
+            $('#dtTable').DataTable();
+        });
+
+        const xoavaitro = (id) => {
+            Swal.fire({
+                title: 'Bạn chắc chắn sẽ xóa?',
+                text: "Bạn sẽ không thể khôi phục bản ghi này!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Xóa'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: '@Url.Action("DeleteVaiTro", "AdminHome")' + `?id=${id}`,
+                        type: 'POST',
+                        success: function (data) {
+                            if (data.Success) {
+                               Swal.fire(
+                                    'Deleted!',
+                                    'Xóa vai trò thành công',
+                                    'success'
+                                )
+                                location.reload();
+                            }
+                            else {
+                              Swal.fire(
+                                    'Deleted!',
+                                    'Xóa vai trò thành công',
+                                    'danger'
+                                )
+                            }
+                        },
+                         error: function (error) {
+                             alert('Lỗi ajax' + error)
+                        },
+                        cache: false,
+                        processData: false,
+                        contentType: false
+                    });
+                }
+            })
+        }
+    </script>
+}

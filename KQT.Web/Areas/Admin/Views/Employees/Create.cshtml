@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+@model KQT.Entity.NguoiDung
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Quản lý người dùng</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item">Người dùng </li>
+                    <li class="breadcrumb-item active">Thêm mới </li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                @using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { encType = "multipart/form-data" }))
+                {
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="card-title">Chỉnh sửa người dùng</h3>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a href='@Url.Action("Index","Employees")' class="btn btn-danger"> Danh sách</a>
+                                &nbsp;
+                                @*<input id="btnThem" type="button" value="Thêm" class="btn btn-warning" />*@
+                                <button type="button" id="btnThem" class="btn btn-warning"><i class="fas fa-save"></i> Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h3>Thêm mới</h3>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Tên đăng nhập</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control", @id = "TenDangNhap" } })
+                                    @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Mật khẩu</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "MatKhau" } })
+                                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Ảnh</label>
+                                <div class="col-md-10">
+                                    <img id="img" alt="User Image" style="height:300px;width:350px" />
+                                    <input type='file' id="fUpload" name="fUpload" />
+                                    @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Họ tên</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @id = "txtHoTen" } })
+                                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Điện thoại</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control", @id = "DienThoai" } })
+                                    @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Email</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Địa chỉ</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Vai trò</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.VaiTroId, (SelectList)ViewBag.ListVaiTro, "---Chọn---", new { @class = "form-control", @id = "VaiTro" })
+                                    @Html.ValidationMessageFor(model => model.VaiTroId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                }
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        };
+
+        $("#fUpload").change(function () {
+            readURL(this);
+        });
+
+        $("#btnThem").click(function () {
+            validate()
+            if (FormModalIsValid) {
+                $('#btnThem').attr('type', 'submit');
+                document.getElementById("btnThem").click()
+            }
+        });
+        function clearErr() {
+            ClearError('#TenDangNhap')
+            ClearError('#MatKhau')
+            ClearError('#Email')
+            ClearError('#VaiTro')
+            ClearError('#txtHoTen')
+            ClearError('#DienThoai')
+        }
+        function validate() {
+            FormModalIsValid = true
+            ValidateRequireControl('#TenDangNhap', 'Bạn nhập tên đăng nhập')
+            ValidateRequireControl('#MatKhau', 'Bạn nhập mật khẩu')
+            ValidateRequireControl('#Email', 'Bạn nhập Email')
+            ValidateRequireControl('#DienThoai', 'Bạn nhập điện thoại')
+            ValidateRequireControl('#txtHoTen', 'Bạn nhập họ tên')
+            ValidateRequireControl('#VaiTro', 'Bạn nhập chọn vai trò')
+            if ($("#Email").val() !== "") {
+                ValidateRequireControlEmail('#Email', 'Email của bạn không đúng định dạng')
+            }
+        }
+    </script>
+}
