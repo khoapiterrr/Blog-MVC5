@@ -7,19 +7,19 @@ using System.Web.Mvc;
 
 namespace KQT.Web.Areas.Admin.Controllers
 {
-    public class ChucNangController : Controller
+    public class ContactController : Controller
     {
         private readonly DataMigrationContext _context;
 
-        public ChucNangController()
+        public ContactController()
         {
             _context = new DataMigrationContext();
         }
 
-        // GET: Admin/ChucNang
+        // GET: Admin/Contact
         public ActionResult Index()
         {
-            return View(_context.ChucNangs.ToList());
+            return View(_context.ContactEntities.ToList());
         }
     }
 }

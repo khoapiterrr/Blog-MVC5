@@ -44,6 +44,7 @@
                                 <th>
                                     Mô tả
                                 </th>
+                                <th>Xử lý</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,8 +58,8 @@
                                         @Html.DisplayFor(modelItem => item.MoTa)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Sửa", "EditVaiTro", new { VaiTroId = item.Id }, new { @class = "btn btn-default" , @style= "background-color:#dfdaeb" }) | 
-                                        @Html.ActionLink("Chi tiết", "DetailsVaiTro", new { VaiTroId = item.Id },new { @class="btn btn-info" }) |
+                                        @Html.ActionLink("Sửa", "EditVaiTro", new { VaiTroId = item.Id }, new { @class = "btn btn-default", @style = "background-color:#dfdaeb" }) |
+                                        @Html.ActionLink("Chi tiết", "DetailsVaiTro", new { VaiTroId = item.Id }, new { @class = "btn btn-info" }) |
                                         <a href="javascript:void(0)" onclick="xoavaitro('@item.Id')" class="btn btn-danger">Xóa</a>
                                     </td>
                                 </tr>

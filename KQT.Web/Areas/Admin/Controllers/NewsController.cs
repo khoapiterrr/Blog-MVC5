@@ -10,18 +10,22 @@ namespace KQT.Web.Areas.Admin.Controllers
 {
     public class NewsController : Controller
     {
-        DataMigrationContext db = new DataMigrationContext();
+        private DataMigrationContext db = new DataMigrationContext();
+
         #region News
+
         public ActionResult Index()
         {
             List<NewsEntity> news = db.NewsEntities.ToList();
 
             return View(news);
         }
+
         public ActionResult CreateNews()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateNews(NewsEntity news, HttpPostedFileBase fUploadHead, HttpPostedFileBase fUploadBody, HttpPostedFileBase fUploadFooter)
@@ -44,16 +48,18 @@ namespace KQT.Web.Areas.Admin.Controllers
                 news.Id = Guid.NewGuid().ToString();
                 db.NewsEntities.Add(news);
                 db.SaveChanges();
-                return RedirectToAction("News");
+                return RedirectToAction("Index");
             }
             return null;
         }
+
         [HttpGet]
         public ActionResult EditNews(string id)
         {
             NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
             return View(news);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
@@ -77,16 +83,18 @@ namespace KQT.Web.Areas.Admin.Controllers
                 NewsEntity oldNews = db.NewsEntities.FirstOrDefault(x => x.Id == id);
                 db.Entry(oldNews).CurrentValues.SetValues(news);
                 db.SaveChanges();
-                return RedirectToAction("News");
+                return RedirectToAction("Index");
             }
             return null;
         }
+
         [HttpGet]
         public ActionResult DetailsNews(string id)
         {
             NewsEntity news = db.NewsEntities.FirstOrDefault(x => x.Id == id);
             return View(news);
         }
+
         public JsonResult DeleteNews(string id)
         {
             try
@@ -117,7 +125,9 @@ namespace KQT.Web.Areas.Admin.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
-        #endregion
+
+        #endregion News
+
         private Boolean CheckFile(HttpPostedFileBase fUpload, string path)
         {
             if (fUpload != null && fUpload.ContentLength > 0)

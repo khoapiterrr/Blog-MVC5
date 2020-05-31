@@ -1,4 +1,5 @@
-﻿using KQT.DataMigration;
+﻿using HashPassword;
+using KQT.DataMigration;
 using KQT.Entity;
 using System;
 using System.Collections.Generic;
@@ -72,7 +73,7 @@ namespace KQT.Web.Areas.Admin.Controllers
             {
                 if (fUpload != null && fUpload.ContentLength > 0)
                 {
-                    fUpload.SaveAs(Server.MapPath("~/Content/img/User/" + fUpload.FileName));
+                    fUpload.SaveAs(Server.MapPath($"~/Content/img/User/{fUpload.FileName}"));
                     nguoiDung.Avatar = fUpload.FileName;
                 }
                 _context.Entry(nguoidungOld).CurrentValues.SetValues(nguoiDung);
@@ -96,13 +97,14 @@ namespace KQT.Web.Areas.Admin.Controllers
             {
                 if (fUpload != null && fUpload.ContentLength > 0)
                 {
-                    fUpload.SaveAs(Server.MapPath("~/Content/img/User/" + fUpload.FileName));
+                    fUpload.SaveAs(Server.MapPath($"~/Content/img/User/{fUpload.FileName}"));
                     nguoiDung.Avatar = fUpload.FileName;
                 }
                 else
                 {
                     nguoiDung.Avatar = "default_user_image.png";
                 }
+                nguoiDung.MatKhau = BCryptPassword.GetHashPassword(nguoiDung.MatKhau);
                 nguoiDung.NgayTao = DateTime.Now;
                 _context.NguoiDungs.Add(nguoiDung);
                 _context.SaveChanges();

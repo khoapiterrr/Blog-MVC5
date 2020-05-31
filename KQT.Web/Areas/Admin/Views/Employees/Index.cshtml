@@ -30,7 +30,7 @@
                             <h3 class="card-title">Người dùng</h3>
                         </div>
                         <div class="col-md-6 text-right">
-                            <a class="btn btn-primary"> Thêm mới</a>
+                            <a class="btn btn-primary" href='@Url.Action("Create","Employees")'> Thêm mới</a>
                         </div>
                     </div>
                 </div>
@@ -42,6 +42,7 @@
                                 <th>
                                     Ảnh đại diện
                                 </th>
+                                <th>Tên đăng nhập</th>
                                 <th>
                                     Họ tên
                                 </th>
@@ -50,9 +51,6 @@
                                 </th>
                                 <th>
                                     Email
-                                </th>
-                                <th>
-                                    Địa chỉ
                                 </th>
 
                                 <th style="width:10%">Xử lý</th>
@@ -67,6 +65,9 @@
                                         <img src="~/Content/img/User/@item.Avatar" style="width:50px;height:50px;" />
                                     </td>
                                     <td>
+                                        @Html.DisplayFor(modelItem => item.TenDangNhap)
+                                    </td>
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.HoTen)
                                     </td>
                                     <td>
@@ -74,9 +75,6 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Email)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DiaChi)
                                     </td>
 
                                     <td style="width:10%">
