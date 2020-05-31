@@ -10,18 +10,22 @@ namespace KQT.Web.Areas.Admin.Controllers
 {
     public class VaiTroController : Controller
     {
-        DataMigrationContext db = new DataMigrationContext();
+        private DataMigrationContext db = new DataMigrationContext();
+
         #region Vai trò
-        public ActionResult VaiTro()
+
+        public ActionResult Index()
         {
             List<VaiTro> vaitro = db.VaiTros.ToList();
 
             return View(vaitro);
         }
+
         public ActionResult CreateVaiTro()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateVaiTro(VaiTro vaiTro)
@@ -34,12 +38,14 @@ namespace KQT.Web.Areas.Admin.Controllers
             }
             return null;
         }
+
         [HttpGet]
         public ActionResult EditVaiTro(int VaiTroId)
         {
             VaiTro vaitro = db.VaiTros.SingleOrDefault(x => x.Id == VaiTroId);
             return View(vaitro);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditVaiTro(VaiTro vaitro, int id)
@@ -53,12 +59,14 @@ namespace KQT.Web.Areas.Admin.Controllers
             }
             return View();
         }
+
         [HttpGet]
         public ActionResult DetailsVaiTro(int VaiTroId)
         {
             VaiTro vaiTro = db.VaiTros.Where(x => x.Id == VaiTroId).First();
             return View(vaiTro);
         }
+
         public JsonResult DeleteVaiTro(int id)
         {
             if (ModelState.IsValid)
@@ -93,6 +101,7 @@ namespace KQT.Web.Areas.Admin.Controllers
             }
             return null;
         }
-        #endregion
+
+        #endregion Vai trò
     }
 }

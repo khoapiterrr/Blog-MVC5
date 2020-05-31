@@ -12,7 +12,7 @@ namespace KQT.Web.Areas.Admin.Controllers
     {
         DataMigrationContext db = new DataMigrationContext();
         #region News
-        public ActionResult News()
+        public ActionResult Index()
         {
             List<NewsEntity> news = db.NewsEntities.ToList();
 
