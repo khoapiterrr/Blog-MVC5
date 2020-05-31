@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace KQT.Entity
 {
+    
     [Table("News")]
     public class NewsEntity : BaseEntity
     {
@@ -16,8 +17,9 @@ namespace KQT.Entity
         public string NewTitle { get; set; }
 
         public string NewTitleSale { get; set; }
-
+        
         [Column(TypeName = "ntext")]
+        
         public string NewContentHead { get; set; }
 
         [Column(TypeName = "ntext")]
