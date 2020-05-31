@@ -65,7 +65,13 @@
     <Reference Include="HashPassword">
       <HintPath>..\..\..\..\Vinsofts\VSL\vsl-api\HashPassword\bin\Debug\HashPassword.dll</HintPath>
     </Reference>
+    <Reference Include="HashPassword.1.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\HashPassword.1.0.0.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -2103,6 +2109,8 @@
     <Content Include="Content\vendor\jquery\jquery.slim.js" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="framework\BCrypt.Net.dll" />
+    <Content Include="framework\HashPassword.dll" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css.map" />
@@ -2265,6 +2273,8 @@
     <Content Include="Areas\Admin\Views\Login\FogetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChucNang\Index.cshtml" />
+    <Fakes Include="Fakes\HashPassword.fakes" />
+    <Fakes Include="Fakes\BCrypt.Net.fakes" />
     <None Include="packages.config" />
     <Content Include="Views\News\Index.cshtml" />
     <None Include="Properties\PublishProfiles\kqt-blog - Web Deploy.pubxml" />
