@@ -12,23 +12,29 @@
 </div>
 <!-- Pager -->
 <div class="clearfix">
-    <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+    <a class="btn btn-primary float-right" href="javascript:void(0)" onclick="LoadMore()">Older Posts &rarr;</a>
 </div>
 @section scripts
 {
 
     <script>
         $(function () {
+            sessionStorage.setItem("pageNumber", 1);
             loadPage(1)
         })
+        const LoadMore= () => {
+            let page = sessionStorage.getItem("pageNumber");
+            loadPage(++page)
+            sessionStorage.setItem("pageNumber", page);
+        }
         const loadPage = (page) => {
             $.ajax({
             url: '@Url.Action("GetNews","Article")'+ `?page=${page}`,
             type: 'GET',
             success: function (data) {
-                if (data != null) {
+                if (data.Success=== true) {
                     const link = '@Url.Action("Index", "Article")';
-                    data.map(e => {
+                    data.Message.map(e => {
                         let linkdetail = `${link}?id=${e.Id}`;
                         $('#mainContentNews').append(`
                             <div class="post-preview">
@@ -50,6 +56,9 @@
 
                         `)
                     })
+                } else {
+                    let page = sessionStorage.getItem("pageNumber");
+                    sessionStorage.setItem("pageNumber", --page);
                 }
             },
             error: function (result, textStatus, errorThrown) {

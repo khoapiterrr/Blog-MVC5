@@ -9,16 +9,13 @@
 }
 
 @Html.Raw(Model.NewsDetail.NewContentHead)
-@if (!string.IsNullOrEmpty(Model.NewsDetail.ImageBody))
-{
-    <h6>hehehehehehehheehehhe</h6>
-    <img class="img-fluid" src="/Content/img/News/@Model.NewsDetail.ImageBody" alt="">
-}
+<h6>hehehehehehehheehehhe</h6>
+<img class="img-fluid" src='~/Content/img/News/@Model.NewsDetail.ImageBody' alt="">
+
 @Html.Raw(Model.NewsDetail.NewContentBody)
-@if (!string.IsNullOrEmpty(Model.NewsDetail.ImageFooter))
-{
-    <img class="img-fluid" src="/Content/img/News/@Model.NewsDetail.ImageFooter" alt="">
-}
+
+<img class="img-fluid" src='~/Content/img/News/@Model.NewsDetail.ImageFooter' alt="">
+
 @Html.Raw(Model.NewsDetail.NewContentFooter)
 <p>
     @Model.NewsDetail.ViewCount.ToString() Viewer. Placeholder text by
