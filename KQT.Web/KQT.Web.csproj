@@ -175,10 +175,11 @@
     <Compile Include="Areas\Admin\Model\JsonPostBack.cs" />
     <Compile Include="Areas\Admin\Model\LoginModel.cs" />
     <Compile Include="Areas\Admin\Model\PhanQuyenViewModel.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContactCLientController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\JsonResponse.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -504,12 +505,6 @@
     <Content Include="Content\dist\js\pages\dashboard.js" />
     <Content Include="Content\dist\js\pages\dashboard2.js" />
     <Content Include="Content\dist\js\pages\dashboard3.js" />
-    <Content Include="Content\img\News\ photo-1-159097166222085640066.jpeg" />
-    <Content Include="Content\img\News\ photo-1-15909716986141517353824.jpg" />
-    <Content Include="Content\img\News\ photo-1-159097172411262300188.jpg" />
-    <Content Include="Content\img\News\about-bg.jpg" />
-    <Content Include="Content\img\News\contact-bg.jpg" />
-    <Content Include="Content\img\News\home-bg.jpg" />
     <Content Include="Content\img\News\ 1-665.jpg" />
     <Content Include="Content\img\News\ 1_8-Gor5TMPqvkeNwSP3LmFw.png" />
     <Content Include="Content\img\News\ 1_gOfvCsvOM4F7WbJYophHAw.png" />
@@ -519,14 +514,22 @@
     <Content Include="Content\img\News\ 67306525_630307827458727_5715331986017484800_n.jpg" />
     <Content Include="Content\img\News\ photo-1-159089937642873395459.jpg" />
     <Content Include="Content\img\News\ post-sample-image.jpg" />
+    <Content Include="Content\img\News\about-bg.jpg" />
+    <Content Include="Content\img\News\contact-bg.jpg" />
+    <Content Include="Content\img\News\home-bg.jpg" />
     <Content Include="Content\img\News\post-bg.jpg" />
     <Content Include="Content\img\News\post-sample-image.jpg" />
+    <Content Include="Content\img\User\1MAU.PNG" />
+    <Content Include="Content\img\User\31363261_2037624456512750_409576404993179648_n.jpg" />
+    <Content Include="Content\img\User\48363042_1006510356216413_386487339414716416_n.png" />
+    <Content Include="Content\img\User\4ZGtXHj.png" />
     <Content Include="Content\img\User\default_user_image.png" />
     <Content Include="Content\img\User\mina2.jpg" />
     <Content Include="Content\img\User\mina5.jpg" />
     <Content Include="Content\img\User\mina6.jpg" />
     <Content Include="Content\img\User\mina7.jpg" />
     <Content Include="Content\img\User\mina8.jpg" />
+    <Content Include="Content\img\User\mina9.jpg" />
     <Content Include="Content\js\clean-blog.js" />
     <Content Include="Content\js\clean-blog.min.js" />
     <Content Include="Content\js\contact_me.js" />
@@ -2251,13 +2254,12 @@
     <Content Include="Views\Shared\_PageHeaderPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Demo\Index.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\ContactClient\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\BaseAdmin\" />
-    <Folder Include="Areas\Admin\Views\Dashboard\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -2292,9 +2294,11 @@
     <Content Include="Areas\Admin\Views\ChucNang\Index.cshtml" />
     <Fakes Include="Fakes\HashPassword.fakes" />
     <Fakes Include="Fakes\BCrypt.Net.fakes" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Article\Index.cshtml" />
     <None Include="Properties\PublishProfiles\kqt-blog - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\kqtblog - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KQT.Core\KQT.Core.csproj">

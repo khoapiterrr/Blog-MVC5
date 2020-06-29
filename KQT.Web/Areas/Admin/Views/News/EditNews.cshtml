@@ -26,7 +26,7 @@
         <div class="col-12">
             <div class="card">
                 <div>
-                    @using (Html.BeginForm("EditNews", "AdminHome", FormMethod.Post, new { encType = "multipart/form-data" }))
+                    @using (Html.BeginForm("EditNews", "News", FormMethod.Post, new { encType = "multipart/form-data" }))
                     {
                         <div class="card-header">
                             <div class="row">
@@ -93,7 +93,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-2">Ảnh phần đầu</label>
                                     <div class="col-md-10">
-                                        <img id="imgHead" src="~/Content/img/News/ @Model.ImageHead" alt="Image Head" style="height:200px;width:250px" />
+                                        <img id="imgHead" src="~/Content/img/News/@Model.ImageHead" alt="Image Head" style="height:200px;width:250px" />
                                         <input type='file' id="fUploadHead" name="fUploadHead" />
                                         @Html.ValidationMessageFor(model => model.ImageHead, "", new { @class = "text-danger" })
                                     </div>
@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-2">Ảnh phần thân</label>
                                     <div class="col-md-10">
-                                        <img id="imgBody" src="~/Content/img/News/ @Model.ImageBody" alt="Image Body" style="height:200px;width:250px" />
+                                        <img id="imgBody" src="~/Content/img/News/@Model.ImageBody" alt="Image Body" style="height:200px;width:250px" />
                                         <input type='file' id="fUploadBody" name="fUploadBody" />
                                         @Html.ValidationMessageFor(model => model.ImageBody, "", new { @class = "text-danger" })
                                     </div>
@@ -111,7 +111,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-2">Ảnh phần cuối</label>
                                     <div class="col-md-10">
-                                        <img id="imgFooter" src="~/Content/img/News/ @Model.ImageFooter" alt="Image footer" style="height:200px;width:250px" />
+                                        <img id="imgFooter" src="~/Content/img/News/@Model.ImageFooter" alt="Image footer" style="height:200px;width:250px" />
                                         <input type='file' id="fUploadFooter" name="fUploadFooter" />
                                         @Html.ValidationMessageFor(model => model.ImageFooter, "", new { @class = "text-danger" })
                                     </div>

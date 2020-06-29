@@ -22,6 +22,10 @@ namespace KQT.Web.Areas.Admin.Controllers
         // GET: Admin/Login
         public ActionResult Index()
         {
+            if (Session[ConstantData.USER_SESSION] as NguoiDung != null)
+            {
+                return RedirectToAction("News", "News");
+            }
             //string currenturl = AdminBaseController.strControlerCurrent;
             //ViewBag.Url = currenturl;
             HttpCookie cookie = Request.Cookies[ConstantData.USER_COOKIES];

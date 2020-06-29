@@ -1,5 +1,6 @@
 ﻿using KQT.DataMigration;
 using KQT.Entity;
+using KQT.Web.Areas.Admin.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,20 +33,23 @@ namespace KQT.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (CheckFile(fUploadHead, "News"))
+                if (CheckFile(fUploadHead, "News") != string.Empty)
                 {
-                    news.ImageHead = fUploadHead.FileName;
+                    news.ImageHead = CheckFile(fUploadHead, "News");
                 }
-                if (CheckFile(fUploadBody, "News"))
+                if (CheckFile(fUploadBody, "News") != string.Empty)
                 {
-                    news.ImageBody = fUploadBody.FileName;
+                    news.ImageBody = CheckFile(fUploadBody, "News");
                 }
-                if (CheckFile(fUploadFooter, "News"))
+                if (CheckFile(fUploadFooter, "News") != string.Empty)
                 {
-                    news.ImageFooter = fUploadFooter.FileName;
+                    news.ImageFooter = CheckFile(fUploadFooter, "News");
                 }
+
                 news.CreatedDate = DateTime.Now;
                 news.Id = Guid.NewGuid().ToString();
+                news.Status = 1;
+                news.CreatedBy = (Session[ConstantData.USER_SESSION] as NguoiDung).Id.ToString();
                 db.NewsEntities.Add(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -67,20 +71,22 @@ namespace KQT.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (CheckFile(fUploadHead, "News"))
+                if (CheckFile(fUploadHead, "News") != string.Empty)
                 {
-                    news.ImageHead = fUploadHead.FileName;
+                    news.ImageHead = CheckFile(fUploadHead, "News");
                 }
-                if (CheckFile(fUploadBody, "News"))
+                if (CheckFile(fUploadBody, "News") != string.Empty)
                 {
-                    news.ImageBody = fUploadBody.FileName;
+                    news.ImageBody = CheckFile(fUploadBody, "News");
                 }
-                if (CheckFile(fUploadFooter, "News"))
+                if (CheckFile(fUploadFooter, "News") != string.Empty)
                 {
-                    news.ImageFooter = fUploadFooter.FileName;
+                    news.ImageFooter = CheckFile(fUploadFooter, "News");
                 }
+
                 news.UpdatedDate = DateTime.Now;
                 NewsEntity oldNews = db.NewsEntities.FirstOrDefault(x => x.Id == id);
+                news.CreatedDate = (oldNews.CreatedDate == null) ? DateTime.Now : oldNews.CreatedDate;
                 db.Entry(oldNews).CurrentValues.SetValues(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -128,14 +134,16 @@ namespace KQT.Web.Areas.Admin.Controllers
 
         #endregion News
 
-        private Boolean CheckFile(HttpPostedFileBase fUpload, string path)
+        private string CheckFile(HttpPostedFileBase fUpload, string path)
         {
             if (fUpload != null && fUpload.ContentLength > 0)
             {
-                fUpload.SaveAs(Server.MapPath("~/Content/img/" + path + "/ " + fUpload.FileName));
-                return true;
+                var id = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds().ToString();
+                var fileName = $"~/Content/img/News/{id}{fUpload.FileName}";
+                fUpload.SaveAs(Server.MapPath(fileName));
+                return $"{id}{fUpload.FileName}";
             }
-            return false;
+            return string.Empty;
         }
     }
 }

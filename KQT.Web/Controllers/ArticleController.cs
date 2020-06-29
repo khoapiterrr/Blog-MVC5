@@ -53,7 +53,11 @@ namespace KQT.Web.Controllers
                         })
                         .Skip((pageNumber - 1) * 4)
                         .Take(4).ToList();
-            return Json(lst, JsonRequestBehavior.AllowGet);
+            if (lst.Count > 0)
+            {
+                return Json(new JsonResponse { Success = true, Message = lst }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new JsonResponse { Success = false }, JsonRequestBehavior.AllowGet);
         }
     }
 }
