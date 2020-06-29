@@ -504,6 +504,9 @@
     <Content Include="Content\dist\js\pages\dashboard.js" />
     <Content Include="Content\dist\js\pages\dashboard2.js" />
     <Content Include="Content\dist\js\pages\dashboard3.js" />
+    <Content Include="Content\img\News\ photo-1-159097166222085640066.jpeg" />
+    <Content Include="Content\img\News\ photo-1-15909716986141517353824.jpg" />
+    <Content Include="Content\img\News\ photo-1-159097172411262300188.jpg" />
     <Content Include="Content\img\News\about-bg.jpg" />
     <Content Include="Content\img\News\contact-bg.jpg" />
     <Content Include="Content\img\News\home-bg.jpg" />

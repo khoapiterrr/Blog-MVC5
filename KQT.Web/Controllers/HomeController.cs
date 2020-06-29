@@ -14,8 +14,8 @@ namespace KQT.Web.Controllers
                 IsHome = true,
                 Author = "Trọng Khoa",
                 CreatedDate = DateTime.UtcNow.ToString("dd/mm/yyy"),
-                SubTitle = "hehehehe0",
-                Title = "Cháo các bạn",
+                SubTitle = "TIN TỨC MỚI",
+                Title = "Chào mừng đến với trang tin tức",
                 Image = "home-bg.jpg"
             };
             return View(obj);
